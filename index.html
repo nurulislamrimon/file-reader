@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Reader</title>
+  </head>
+  <body>
+    <h1>File Reader</h1>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      "
+    >
+      <input type="file" id="file-input" onchange="readFile(this.files)" />
+
+      <img
+        src=""
+        alt=""
+        id="image"
+        height="400"
+        width="400"
+        style="object-fit: contain"
+      />
+    </div>
+
+    <script>
+      function readFile(files) {
+        const file = files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+          const text = reader.result;
+          document.getElementById("image").src = text;
+        };
+        reader.readAsDataURL(file);
+      }
+    </script>
+  </body>
+</html>
